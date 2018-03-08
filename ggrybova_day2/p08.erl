@@ -1,13 +1,6 @@
 -module(p08).
 -export([compress/1]).
--export([reverse/1]).
-
-reverse(L) ->
-	reverse(L, []).
-reverse([], L) ->
-	L;
-reverse([H|T],L) ->
-	reverse(T,[H|L]).
+-import(p05, [reverse/1]).
 
 compress(L) -> compress(L, []).
 compress([], L) -> reverse(L);
