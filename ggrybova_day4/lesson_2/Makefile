@@ -1,4 +1,4 @@
-PROJECT = lesson_4
+PROJECT = lesson_2
 PROJECT_DESCRIPTION = New project
 PROJECT_VERSION = 0.1.0
 
