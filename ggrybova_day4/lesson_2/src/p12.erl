@@ -17,3 +17,14 @@ decode_modified({N, H}, T, Acc) ->
 	decode_modified({N - 1, H}, T, [Acc|[H]]);
 decode_modified(H, T, Acc) ->
 	decode_modified([], T, [Acc|[H]]).
+
+-ifdef(TEST).
+-include_lib("eunit/include/eunit.hrl").
+
+decode_modified_test() -> [
+?assertEqual([], decode_modified([])),
+?assertEqual([a], decode_modified([a])),
+?assertEqual([a,a,a,a,b,c,c,a,a,d,e,e,e,e], decode_modified([{4,a},{1,b},{2,c},{2,a},{1,d},{4,e}]))
+].
+
+-endif.

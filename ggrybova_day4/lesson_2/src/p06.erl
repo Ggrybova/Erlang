@@ -4,3 +4,17 @@
 
 is_palindrome(L) ->
 	L == reverse(L).
+
+-ifdef(TEST).
+-include_lib("eunit/include/eunit.hrl").
+
+is_palindrome_test() -> [
+?assertEqual(true, is_palindrome([])),
+?assertEqual(true, is_palindrome([a])),
+?assertEqual(false, is_palindrome([a, b])),
+?assertEqual(true, is_palindrome([a, b, a])),
+?assertEqual(true, is_palindrome([a, b, b, a])),
+?assertEqual(false, is_palindrome([1, 2, 3, 4, 2, 1]))
+].
+
+-endif.
