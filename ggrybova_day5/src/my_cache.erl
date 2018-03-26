@@ -52,3 +52,28 @@ delete_obsolete(Id) ->
 		'$end_of_table' -> ok;
 		_ -> delete_obsolete(Next)
 	end.
+
+-ifdef(TEST).
+-include_lib("eunit/include/eunit.hrl").
+
+t1_test() -> [
+	?assertEqual(ok, my_cache:create()),
+	?assertEqual(ok, my_cache:insert(key1, value1, 3)),
+	?assertEqual(ok, my_cache:insert(key2, value2, 2)),
+	?assertEqual(ok, my_cache:insert(key3, value3, 4)),
+	?assertEqual({ok, value1}, my_cache:lookup(key1)),
+	?assertEqual({ok, value2}, my_cache:lookup(key2)),
+	?assertEqual({ok, value3}, my_cache:lookup(key3)),
+	timer:sleep(timer:seconds(2)),
+	?assertEqual({ok, value1}, my_cache:lookup(key1)),
+	?assertEqual([], my_cache:lookup(key2)),
+	?assertEqual({ok, value3}, my_cache:lookup(key3)),
+	timer:sleep(timer:seconds(2)),
+	?assertEqual([], my_cache:lookup(key1)),
+	?assertEqual([], my_cache:lookup(key3)),
+	?assert(my_cache:table_to_list() /= []),
+	?assertEqual(ok, my_cache:delete_obsolete()),
+	?assertEqual([], my_cache:table_to_list())
+].
+
+-endif.
