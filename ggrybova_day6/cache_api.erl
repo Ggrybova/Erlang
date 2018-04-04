@@ -9,8 +9,8 @@
 -export([delete_obsolete/0]).
 -export([stop/1]).
 
-start_link([Interval]) ->
-	gen_server:start_link({local, ?MODULE}, ?MODULE, [Interval], []).
+start_link([Arg]) ->
+	gen_server:start_link({local, ?MODULE}, ?MODULE, [Arg], []).
 
 insert() ->
 .

@@ -8,11 +8,12 @@
 -export([terminate/2]).
 -export([code_change/3]).
 
--record(server, {pid, drop_int}).
+-record(state, {drop_int :: int()}).
 
-init(Interval) ->
-	{ok, #server{pid => cache_server,
-				drop_int => Interval}}.
+init({_Arg, Interval}) ->
+	State = #state{drop_int => Interval},
+	ets:new(?TAB_NAME, [named_table]),
+	{ok, State}.
 
 handle_call() ->
 .
