@@ -7,7 +7,7 @@
 -export([lookup_by_date/2]).
 -export([delete/1]).
 -export([delete_obsolete/0]).
--export([stop/1]).
+-export([stop/0]).
 
 start_link([Arg]) ->
 	gen_server:start_link({local, ?MODULE}, ?MODULE, [Arg], []).
@@ -28,4 +28,4 @@ delete_obsolete() ->
 .
 
 stop() ->
-.
+	gen_server:stop(?MODULE).

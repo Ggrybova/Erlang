@@ -24,8 +24,9 @@ handle_cast() ->
 handle_info() ->
 .
 
-terminate() ->
-.
+terminate(Reason, State) ->
+	ets:delete(?TAB_NAME),
+	ok.
 
 code_change() ->
 .
