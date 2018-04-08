@@ -1,0 +1,7 @@
+[{release,"server_cache_release","1","7.3",
+          [{kernel,"4.2","./lib/kernel-4.2"},
+           {stdlib,"2.8","./lib/stdlib-2.8"},
+           {server_cache,"0.1.0","./lib/server_cache-0.1.0"},
+           {sasl,"2.7","./lib/sasl-2.7"},
+           {runtime_tools,"1.9.3","./lib/runtime_tools-1.9.3"}],
+          permanent}].

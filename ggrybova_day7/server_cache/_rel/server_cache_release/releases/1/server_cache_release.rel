@@ -1,0 +1,7 @@
+{release,{"server_cache_release","1"},
+         {erts,"7.3"},
+         [{kernel,"4.2"},
+          {stdlib,"2.8"},
+          {server_cache,"0.1.0"},
+          {sasl,"2.7"},
+          {runtime_tools,"1.9.3"}]}. 
