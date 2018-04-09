@@ -8,8 +8,8 @@ start(_Type, _Args) ->
     Dispatch = cowboy_router:compile([
         {'_', [{"/", cache_server, []}]}
     ]),
-    cowboy:start_clear(http, [{port, 8080}],
-        #{env => #{dispatch => Dispatch}}),
+    cowboy:start_http(my_http_listener, 100, [{port, 8080}],
+        [{env, [{dispatch, Dispatch}]}]),
     cache_server_sup:start_link().
 
 stop(_State) ->
