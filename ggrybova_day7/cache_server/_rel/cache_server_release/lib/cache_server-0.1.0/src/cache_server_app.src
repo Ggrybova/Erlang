@@ -1,0 +1,13 @@
+{application, cache_server, [
+    {description, "Web server"},
+    {vsn, "0.1.0"},
+    {modules, []},
+    {registered, []},
+    {applications, [
+        kernel,
+        stdlib,
+        cowboy
+    ]},
+    {mod, {cache_server_app, []}},
+    {env, []}
+]}.
